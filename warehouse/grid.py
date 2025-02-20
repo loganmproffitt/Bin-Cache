@@ -10,9 +10,24 @@ from warehouse.exit_stack import ExitStack
 '''
 
 class Grid:
+    _instance = None  # Singleton instance
+
+    def __new__(cls, *args, **kwargs):
+        if cls._instance is None:
+            cls._instance = super(Grid, cls).__new__(cls)
+            cls._instance._initialized = False
+        return cls._instance
+
     def __init__(self):
-        self.nodes = {} 
-        self.adjacency_list = defaultdict(list)
+        if not self._initialized:
+            self.nodes = {}
+            self.adjacency_list = defaultdict(list)
+            self._initialized = True
+
+    @classmethod
+    def reset(cls):
+        """Allows tests to reset the singleton instance."""
+        cls._instance = None
 
     def init_grid(self, x_size, y_size, depth, entry_nodes, exit_nodes):
         for x in range(x_size):
@@ -25,8 +40,11 @@ class Grid:
                 self.add_node(x, y, depth, stack_type)
 
     def add_node(self, x, y, depth, stack_type):
+        #print(f"depth before: {depth}")
         if (x, y) not in self.nodes:
             self.nodes[(x, y)] = stack_type(x, y, depth)
+            #print(f"DEBUG: Node ({x}, {y}) initialized with depth={depth}")
+        
 
     def connect_nodes(self, a, b, weight=1):
         if a in self.nodes and b in self.nodes:
@@ -42,4 +60,4 @@ class Grid:
 
     def print_grid(self):
         for (x, y), node in sorted(self.nodes.items()):
-            print(f"({x}, {y}): {list(node.stack)}")
+            print(f"({x}, {y}): {list(node.stack)}, depths {node.depth}")

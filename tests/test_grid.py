@@ -8,6 +8,8 @@ class TestGrid(unittest.TestCase):
     
     def setUp(self):
         """Set up a test grid before each test."""
+        Grid._instance =None
+        self.grid = Grid()
         self.x_size = 3
         self.y_size = 3
         self.depth = 5

@@ -1,11 +1,9 @@
-from collections import deque
 from warehouse.stack import Stack
 from warehouse.exceptions import StackEmptyError
 
 class EntryStack(Stack):
     def __init__(self, x, y, depth):
         super().__init__(x, y, depth)
-        self.stack = deque()
 
     # Treat as queue
     def retrieve_bin(self):

@@ -3,7 +3,7 @@ from datetime import datetime
 from warehouse.exceptions import BinFullError, BinEmptyError, ItemNotFoundError
 
 class Bin:
-    def __init__(self, max_items=5):
+    def __init__(self, max_items=7):
         self.items = []
         self.id = str(uuid.uuid4())
         self.entry_date = datetime.now()

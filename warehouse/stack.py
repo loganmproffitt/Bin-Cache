@@ -1,11 +1,12 @@
 from warehouse.exceptions import *
+from collections import deque
 
 class Stack:
-    def __init__(self, x, y, depth=6):
+    def __init__(self, x, y, depth):
         self.x = x
         self.y = y
         self.depth = depth
-        self.bin_count = 0
+        self.stack = deque()
 
     def add_bin(self, bin):
         if self.is_full():
@@ -17,3 +18,6 @@ class Stack:
     
     def is_empty(self):
         return len(self.stack) == 0
+    
+    def get_bin_count(self):
+        return len(self.stack)
