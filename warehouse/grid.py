@@ -1,8 +1,7 @@
 from collections import defaultdict
-from stack import Stack
-from bin_stack import BinStack
-from entry_stack import EntryStack
-from exit_stack import ExitStack
+from warehouse.bin_stack import BinStack
+from warehouse.entry_stack import EntryStack
+from warehouse.exit_stack import ExitStack
 
 '''
     - Graph representation of xy plane. Can initialize to uniform shape and add non-uniform nodes.
@@ -33,6 +32,13 @@ class Grid:
         if a in self.nodes and b in self.nodes:
             self.adjacency_list[a].append((b, weight))
             self.adjacency_list[b].append((a, weight))
+
+    def get_stack(self, x, y):
+        if (x, y) in self.nodes:
+            return self.nodes[(x, y)]
+        else:
+            print(f"Node at ({x, y}) not found.")
+            return None
 
     def print_grid(self):
         for (x, y), node in sorted(self.nodes.items()):
