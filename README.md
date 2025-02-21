@@ -1,6 +1,6 @@
 # Bin-Cache
 
-Basic simulator of an automated warehouse system. Includes:
+Basic simulator of an automated warehouse system, developed with Python. Includes:
 - Graph data structure to represent the top xy plane
 - Stack objects stored at each node in the graph
   - Stack types include BinStack, EntryStack, and ExitStack
