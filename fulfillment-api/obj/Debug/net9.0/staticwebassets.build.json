@@ -1,0 +1,12 @@
+{
+  "Version": 1,
+  "Hash": "m+u2X9wW1pBxXjnd5flvcnAsh+GP7z5g98wdrngHCTw=",
+  "Source": "fulfillment-api",
+  "BasePath": "_content/fulfillment-api",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": [],
+  "Endpoints": []
+}

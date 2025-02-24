@@ -11,7 +11,7 @@ var connectionString = builder.Configuration.GetConnectionString("DefaultConnect
 using (var connection = new NpgsqlConnection(connectionString))
 {
     connection.Open();
-    var script = File.ReadAllText("Scripts/create_tables.sql");
+    var script = File.ReadAllText("scripts/create_tables.sql");
     using (var command = new NpgsqlCommand(script, connection))
     {
         command.ExecuteNonQuery();
