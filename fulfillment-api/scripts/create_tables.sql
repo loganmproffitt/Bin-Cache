@@ -22,11 +22,11 @@ CREATE TABLE IF NOT EXISTS items (
 );
 
 CREATE TABLE IF NOT EXISTS order_items (
+    id SERIAL PRIMARY KEY,
     order_id INT REFERENCES orders(id) ON DELETE RESTRICT,
     item_id INT REFERENCES items(id) ON DELETE RESTRICT,
     quantity INT CHECK (quantity > 0),
-    price_at_purchase DECIMAL(10,2) check (price_at_purchase >= 0),
-    PRIMARY KEY (order_id, item_id)
+    price_at_purchase DECIMAL(10,2) check (price_at_purchase >= 0)
 );
 
 /* Create locations and link each item's inventory to a location. Also link orders to locations. */
